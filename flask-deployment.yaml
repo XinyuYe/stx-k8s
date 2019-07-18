@@ -21,10 +21,10 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: apcelent/flask-web:v1
+      - image: yexinyutony/test-k8s:latest
         name: flask-app
         ports:
         - containerPort: 5000
         resources: {}
-        imagePullPolicy: Never  
+        imagePullPolicy: Always  
 status: {}

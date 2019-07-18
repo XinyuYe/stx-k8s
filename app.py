@@ -2,12 +2,13 @@ from flask import Flask, request, Response, stream_with_context, jsonify
 from redis import Redis
 import os, time, json
 app = Flask(__name__)
-db = Redis(host='redis', port=6379)
+# db = Redis(host='redis', port=6379)
 
 @app.route('/')
 def hello():
-    db.incr('count')
-    return 'Count is %s.' % db.get('count')
+    # db.incr('count')
+    # return 'Count is %s.' % db.get('count')
+    return 'hello'
 
 
 @app.route('/<path:path>', methods = ['PUT', 'GET'])
@@ -16,15 +17,16 @@ def home(path):
     if (request.method == 'PUT'):
         event = request.json
         event['last_updated'] = int(time.time())
-        db.delete(path) #remove old keys
-        db.hmset(path, event)
+        # db.delete(path) #remove old keys
+        # db.hmset(path, event)
         return jsonify(event), 201
 
 
-    if not db.exists(path):
-        return "Error: path does not exist"
+    # if not db.exists(path):
+    #     return "Error: path does not exist"
 
-    event = db.hgetall(path)
+    # event = db.hgetall(path)
+    event = 'none'
     return jsonify(event), 200
 
 
