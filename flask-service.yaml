@@ -8,12 +8,14 @@ metadata:
   name: flask-app
 spec:
   ports:
-  - port: 8080
+  # - port: 8080
+  - port: 8765
     protocol: TCP
     targetPort: 5000
   selector:
     app: flask
     tier: frontend
-  type: NodePort
+  # type: NodePort
+  type: LoadBalancer
 status:
   loadBalancer: {}
